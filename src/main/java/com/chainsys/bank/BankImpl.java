@@ -19,8 +19,9 @@ public class BankImpl implements BankInterface {
 		//Get Name From User
 		System.out.print("Enter the Name: ");
 		String name = ip.next();
+		name = val.checkName(name);
 		customer.setName(name);
-
+		
 		//Get Date of Birth from User
 		System.out.print("Enter the DOB (yyyy-MM-dd): ");
 		String dob = ip.next();
@@ -31,6 +32,7 @@ public class BankImpl implements BankInterface {
 		//Get Date of Birth from User
 		System.out.print("Enter the Address: ");
 		String address = ip.next();
+		address = val.checkName(address);
 		customer.setAddress(address);
 		try 
 		{
@@ -83,6 +85,7 @@ public class BankImpl implements BankInterface {
 
 	}
 
+	//Displays all records
 	public void displayInfo(Bank bank,Customer customer) throws SQLException, ClassNotFoundException {
 		try 
 		{
@@ -94,13 +97,13 @@ public class BankImpl implements BankInterface {
 
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(1));
-				System.out.println(rs.getString(2));
-				System.out.println(rs.getDate(3));
-				System.out.println(rs.getInt(4));
-				System.out.println(rs.getString(5));
-				System.out.println(rs.getFloat(6));
-				System.out.println(rs.getDate(7));
+				System.out.println("Account No: "+rs.getInt(1));
+				System.out.println("Name: "+rs.getString(2));
+				System.out.println("Date of Birth: "+rs.getDate(3));
+				System.out.println("Age: "+rs.getInt(4));
+				System.out.println("Address: "+rs.getString(5));
+				System.out.println("Balance: "+rs.getFloat(6));
+				System.out.println("Late Transaction Date: "+rs.getDate(7)+"\n");
 			}
 			rs.close();
 			ps.close();
